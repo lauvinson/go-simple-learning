@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-//关闭channel来标记没有更多等待
+//关闭channel来标记没有更多
 //value, more := <- channel
 
 func main() {
@@ -12,10 +12,10 @@ func main() {
 	go func() {
 		for {
 			//接收value和more
-			j, more := <- jobs
+			j, more := <-jobs
 			if more {
 				fmt.Println("received:", j)
-			}else {
+			} else {
 				fmt.Println("received all jobs")
 				done <- true
 				return
